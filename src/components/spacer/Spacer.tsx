@@ -7,19 +7,19 @@ type SpacerSize = keyof typeof theme.spacing
 const getSpacerCss: Record<SpacerSize, ReturnType<typeof css>> = {
   xs: css`
     width: ${({ theme }) => theme.spacing.xs}px;
-    height: ${({ theme }) => theme.spacing.xs}px;
+    min-height: ${({ theme }) => theme.spacing.xs}px;
   `,
   sm: css`
     width: ${({ theme }) => theme.spacing.sm}px;
-    height: ${({ theme }) => theme.spacing.sm}px;
+    min-height: ${({ theme }) => theme.spacing.sm}px;
   `,
   md: css`
     width: ${({ theme }) => theme.spacing.md}px;
-    height: ${({ theme }) => theme.spacing.md}px;
+    min-height: ${({ theme }) => theme.spacing.md}px;
   `,
   lg: css`
     width: ${({ theme }) => theme.spacing.lg}px;
-    height: ${({ theme }) => theme.spacing.lg}px;
+    min-height: ${({ theme }) => theme.spacing.lg}px;
   `,
 }
 

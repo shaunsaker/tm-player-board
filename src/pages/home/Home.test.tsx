@@ -7,6 +7,8 @@ describe('Home', () => {
   it('displays greeting', async () => {
     render(<Home />)
 
-    expect(screen.getByText("Ello Gov'na!")).toBeDefined()
+    expect(
+      screen.getByText('Welcome to the unofficial Terraforming Mars digital Player Board 👋🏻'),
+    ).toBeDefined()
   })
 })

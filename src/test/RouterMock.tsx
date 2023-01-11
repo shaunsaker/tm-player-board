@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
-type MockRouterProps = { children: ReactElement }
+type RouterMockProps = { children: ReactElement }
 
-export const MockRouter = ({ children }: MockRouterProps): ReactElement => {
+export const RouterMock = ({ children }: RouterMockProps): ReactElement => {
   return (
     <MemoryRouter>
       <Routes>

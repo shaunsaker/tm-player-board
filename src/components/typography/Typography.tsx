@@ -1,4 +1,3 @@
-import '@fontsource/knewave/latin-400.css'
 import '@fontsource/inter/latin-700.css'
 import '@fontsource/inter/latin-400.css'
 
@@ -8,7 +7,7 @@ export type TypographyKind = 'title' | 'heading' | 'paragraph' | 'small'
 
 export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = {
   title: css`
-    font-family: Knewave;
+    font-family: Inter;
     font-size: 64px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
@@ -20,8 +19,8 @@ export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = 
   `,
   heading: css`
     font-family: Inter;
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 24px;
+    line-height: 30px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
   `,
@@ -51,8 +50,4 @@ export const Typography = styled.div<{
 }>`
   all: unset;
   ${({ kind }) => getTypographyCss[kind]};
-
-  a {
-    color: ${({ theme }) => theme.colors.accent};
-  }
 `

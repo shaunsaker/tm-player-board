@@ -46,11 +46,10 @@ export const HeaderBar = ({ children }: HeaderBarProps): ReactElement => {
 }
 
 const Container = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  width: 100%;
   height: 64px;
+  background-color: ${({ theme }) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white20};
   display: flex;
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacing.lg}px;

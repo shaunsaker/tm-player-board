@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 
 import { AppProvider } from '../components/appProvider/AppProvider'
-import { MockRouter } from './MockRouter'
+import { RouterMock } from './RouterMock'
 
 type TestWrapperProps = {
   children: ReactElement
@@ -9,6 +9,6 @@ type TestWrapperProps = {
 
 export const TestWrapper = ({ children }: TestWrapperProps): ReactElement => (
   <AppProvider>
-    <MockRouter>{children}</MockRouter>
+    <RouterMock>{children}</RouterMock>
   </AppProvider>
 )

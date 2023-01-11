@@ -4,6 +4,8 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       accent: string
+      accent80: string
+      background: string
       black100: string
       black80: string
       black50: string
@@ -31,6 +33,9 @@ declare module 'styled-components' {
     }
     breakpoints: {
       mobile: number
+    }
+    elements: {
+      content: { width: number }
     }
   }
 }

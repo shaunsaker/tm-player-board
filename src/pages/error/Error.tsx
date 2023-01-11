@@ -13,15 +13,17 @@ export const Error = (): ReactElement => {
     <Page>
       <HeaderBar />
 
-      <Typography kind="title" as="h1">
-        Oops!
-      </Typography>
+      <Page.Content>
+        <Typography kind="title" as="h1">
+          Oops!
+        </Typography>
 
-      <Spacer size="lg" />
+        <Spacer size="lg" />
 
-      <Typography kind="paragraph" as="p">
-        {error.statusText || error.message}
-      </Typography>
+        <Typography kind="paragraph" as="p">
+          {error.statusText || error.message}
+        </Typography>
+      </Page.Content>
     </Page>
   )
 }
