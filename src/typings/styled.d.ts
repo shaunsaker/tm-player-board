@@ -5,7 +5,6 @@ declare module 'styled-components' {
     colors: {
       accent: string
       accent80: string
-      background: string
       black100: string
       black80: string
       black50: string
@@ -32,10 +31,16 @@ declare module 'styled-components' {
       default: string
     }
     breakpoints: {
+      tablet: number
       mobile: number
+      mobileSm: number
     }
     elements: {
-      content: { width: number }
+      inputs: number
+    }
+    maxWidths: {
+      content: number
+      button: number
     }
   }
 }

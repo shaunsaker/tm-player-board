@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@fontsource/inter": "4.5.14",
-    "jotai": "1.12.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.6.1",
     "space-travel": "1.0.6",
-    "styled-components": "5.3.6"
+    "styled-components": "5.3.6",
+    "use-query-params": "2.1.2"
   },
   "devDependencies": {
     "@expo/spawn-async": "1.7.0",

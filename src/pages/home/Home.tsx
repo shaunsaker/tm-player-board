@@ -1,16 +1,23 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import LogoIcon from '../../assets/logo-icon.svg'
 import { AnchorText } from '../../components/anchorText/AnchorText'
 import { Button } from '../../components/button/Button'
+import { FooterBar } from '../../components/footerBar/FooterBar'
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
 import { Spacer } from '../../components/spacer/Spacer'
 import { Typography } from '../../components/typography/Typography'
+import { RoutePaths } from '../../Router'
 
 export const Home = (): ReactElement => {
-  const hasExistingGame = true // TODO: SS pending logic
+  const navigate = useNavigate()
+
+  const onNewGameClick = useCallback(() => {
+    navigate(RoutePaths.game)
+  }, [navigate])
 
   return (
     <Page>
@@ -39,19 +46,9 @@ export const Home = (): ReactElement => {
         </Typography>
       </Page.Content>
 
-      <FooterContainer>
+      <FooterBar>
         <ButtonsContainer>
-          {hasExistingGame && (
-            <>
-              <Button type="button" kind="secondary">
-                CONTINUE GAME
-              </Button>
-
-              <Spacer />
-            </>
-          )}
-
-          <Button type="button" kind="primary">
+          <Button type="button" kind="primary" onClick={onNewGameClick}>
             NEW GAME
           </Button>
         </ButtonsContainer>
@@ -62,7 +59,7 @@ export const Home = (): ReactElement => {
           Made with ❤️ of board games by{' '}
           <AnchorText href="https://shaunsaker.com">Shaun Saker</AnchorText>
         </Typography>
-      </FooterContainer>
+      </FooterBar>
     </Page>
   )
 }
@@ -72,20 +69,8 @@ const StyledLogoIcon = styled(LogoIcon)`
   min-height: 100px;
 `
 
-const FooterContainer = styled.div`
-  width: 100%;
-  border-top: 1px solid ${({ theme }) => theme.colors.white20};
-  background-color: ${({ theme }) => theme.colors.background};
-  padding: ${({ theme }) => theme.spacing.md}px ${({ theme }) => theme.spacing.lg}px;
-  text-align: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    padding: ${({ theme }) => theme.spacing.md}px;
-  }
-`
-
 const ButtonsContainer = styled.div`
   display: flex;
-  max-width: ${({ theme }) => theme.elements.content.width}px;
+  max-width: ${({ theme }) => theme.maxWidths.content}px;
   margin: 0 auto;
 `

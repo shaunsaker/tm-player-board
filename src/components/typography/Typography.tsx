@@ -14,12 +14,11 @@ export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = 
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
       font-size: 48px;
-      line-height: 48px;
     }
   `,
   heading: css`
     font-family: Inter;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
@@ -39,7 +38,7 @@ export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = 
   small: css`
     font-family: Inter;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 18px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
   `,

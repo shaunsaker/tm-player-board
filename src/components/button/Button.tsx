@@ -10,21 +10,25 @@ type ButtonProps = HTMLProps<HTMLButtonElement> & {
   kind: ButtonKind
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ ...props }, ref) => {
-  return <StyledButton {...props} as="button" ref={ref} />
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ disabled, ...props }, ref) => {
+  return (
+    <StyledButton {...props} as="button" ref={ref} disabled={disabled} aria-disabled={disabled} />
+  )
 })
 
 export const getButtonCss: Record<ButtonKind, ReturnType<typeof css>> = {
   primary: css`
     background-color: ${({ theme }) => theme.colors.accent};
+    border-color: ${({ theme }) => theme.colors.black100};
 
     &:hover,
     &:focus-visible {
-      border-color: ${({ theme }) => theme.colors.accent};
+      border-color: ${({ theme }) => theme.colors.white100};
     }
   `,
   secondary: css`
     background-color: ${({ theme }) => theme.colors.black100};
+    border-color: ${({ theme }) => theme.colors.white20};
 
     &:hover,
     &:focus-visible {
@@ -42,16 +46,23 @@ const StyledButton = styled.button<{
 }>`
   cursor: pointer;
   width: 100%;
-  border-radius: ${({ theme }) => theme.radius.md}px;
-  border: 2px solid ${({ theme }) => theme.colors.white20};
+  min-width: ${({ theme }) => theme.elements.inputs}px;
+  height: ${({ theme }) => theme.elements.inputs}px;
   outline: none;
-  box-shadow: ${({ theme }) => theme.shadows.md};
+  border: 1px solid ${({ theme }) => theme.colors.white20};
+  border-radius: ${({ theme }) => theme.radius.sm}px;
   padding: ${({ theme }) => theme.spacing.sm}px;
   display: flex;
   justify-content: center;
   align-items: center;
   ${getTypographyCss['paragraph']};
   font-weight: 700;
+  white-space: nowrap;
   transition: ${({ theme }) => theme.transition.default};
   ${({ kind }) => getButtonCss[kind]};
+
+  &[aria-disabled='true'] {
+    background-color: ${({ theme }) => theme.colors.white20};
+    color: ${({ theme }) => theme.colors.white20};
+  }
 `

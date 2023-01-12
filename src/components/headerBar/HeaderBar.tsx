@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import appJson from '../../../app.json'
 import AngleLeftIcon from '../../assets/angle-left-icon.svg'
 import LogoIcon from '../../assets/logo-icon.svg'
-import { Routes } from '../../Router'
+import { RoutePaths } from '../../Router'
 import { IconButton } from '../iconButton/IconButton'
 import { Link } from '../link/Link'
 import { Spacer } from '../spacer/Spacer'
@@ -26,14 +26,14 @@ export const HeaderBar = ({ children }: HeaderBarProps): ReactElement => {
             <AngleLeftIcon />
           </IconButton>
 
-          <Spacer />
+          <Spacer size="sm" />
         </>
       )}
 
-      <StyledLink to={Routes.home}>
+      <StyledLink to={RoutePaths.home}>
         <StyledLogoIcon />
 
-        <Spacer />
+        <Spacer size="sm" />
 
         <AppNameText kind="paragraph">{appJson.displayName}</AppNameText>
 
@@ -48,7 +48,7 @@ export const HeaderBar = ({ children }: HeaderBarProps): ReactElement => {
 const Container = styled.div`
   width: 100%;
   height: 64px;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.black100};
   border-bottom: 1px solid ${({ theme }) => theme.colors.white20};
   display: flex;
   align-items: center;
