@@ -5,6 +5,7 @@ import MinusIcon from '../../assets/minus-icon.svg'
 import PlusIcon from '../../assets/plus-icon.svg'
 import { Button } from '../button/Button'
 import { getTypographyCss } from '../typography/Typography'
+import { ChangedAmount } from './changedAmount/ChangedAmount'
 
 type NumberInputProps = HTMLProps<HTMLInputElement> & {
   min: number
@@ -47,15 +48,21 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           <MinusIcon />
         </AddSubtractButton>
 
-        <Input
-          {...props}
-          ref={ref}
-          as="input"
-          type="number"
-          min={min}
-          value={value}
-          onChange={onChange}
-        />
+        <InputContainer>
+          <Input
+            {...props}
+            ref={ref}
+            as="input"
+            type="number"
+            min={min}
+            value={value}
+            onChange={onChange}
+          />
+
+          <ChangeAmountContainer>
+            <ChangedAmount value={value} />
+          </ChangeAmountContainer>
+        </InputContainer>
 
         <AddSubtractButton kind="secondary" type="button" onClick={onAddClick}>
           <PlusIcon />
@@ -72,6 +79,10 @@ const Container = styled.div`
 
 const AddSubtractButton = styled(Button)`
   width: ${({ theme }) => theme.elements.inputs}px;
+`
+
+const InputContainer = styled.div`
+  position: relative;
 `
 
 const Input = styled.input`
@@ -100,4 +111,10 @@ const Input = styled.input`
     border-color: ${({ theme }) => theme.colors.accent};
     background-color: ${({ theme }) => theme.colors.white20};
   }
+`
+
+const ChangeAmountContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: ${({ theme }) => theme.spacing.xs}px;
 `

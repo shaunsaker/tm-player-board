@@ -45,7 +45,7 @@ export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = 
   tiny: css`
     font-family: Inter;
     font-size: 10px;
-    line-height: 12px;
+    line-height: 10px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
   `,
