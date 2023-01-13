@@ -5,11 +5,13 @@ import { Resource } from '../../store/resources/models'
 import { useResource } from '../../store/resources/useResource'
 import { NumberInput } from '../numberInput/NumberInput'
 import { Spacer } from '../spacer/Spacer'
+import { Typography } from '../typography/Typography'
 
 type ResourceCardProps = Resource
 
 export const ResourceCard = ({
   id,
+  name,
   color,
   iconComponent,
   stockpile,
@@ -34,11 +36,21 @@ export const ResourceCard = ({
 
   return (
     <Container>
-      <IconContainer style={{ backgroundColor: color }}>{iconComponent}</IconContainer>
+      <HeaderContainer>
+        <IconContainer style={{ backgroundColor: color }}>{iconComponent}</IconContainer>
+
+        <Spacer size="sm" />
+
+        <Typography kind="small">{name}</Typography>
+      </HeaderContainer>
 
       {stockpile && (
         <>
           <Spacer size="sm" />
+
+          <Typography kind="small">Stockpile</Typography>
+
+          <Spacer size="xs" />
 
           <NumberInput
             min={Number(stockpile.min)}
@@ -51,6 +63,10 @@ export const ResourceCard = ({
       {production && (
         <>
           <Spacer size="sm" />
+
+          <Typography kind="small">Production</Typography>
+
+          <Spacer size="xs" />
 
           <NumberInput
             min={Number(production.min)}
@@ -75,11 +91,18 @@ const Container = styled.div`
   align-items: center;
 `
 
+const HeaderContainer = styled.div`
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.black100};
+  border-radius: ${({ theme }) => theme.radius.sm}px;
+  background-color: ${({ theme }) => theme.colors.white20};
+  display: flex;
+  align-items: center;
+`
+
 const IconContainer = styled.div`
   width: ${({ theme }) => theme.elements.inputs}px;
   height: ${({ theme }) => theme.elements.inputs}px;
-  border: 1px solid ${({ theme }) => theme.colors.black100};
-  border-radius: ${({ theme }) => theme.radius.sm}px;
   display: flex;
   justify-content: center;
   align-items: center;
