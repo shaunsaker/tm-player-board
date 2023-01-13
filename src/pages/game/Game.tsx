@@ -1,13 +1,14 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
-import RedoIcon from '../../assets/redo-icon.svg'
-import UndoIcon from '../../assets/undo-icon.svg'
 import { Button } from '../../components/button/Button'
 import { FooterBar } from '../../components/footerBar/FooterBar'
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
+import { RedoButton } from '../../components/redoButton/RedoButton'
 import { ResourceCard } from '../../components/resourceCard/ResourceCard'
+import { Spacer } from '../../components/spacer/Spacer'
+import { UndoButton } from '../../components/undoButton/UndoButton'
 import { resources } from '../../store/resources/constants'
 import { useProductionPhase } from '../../store/resources/useProductionPhase'
 import { objectToArray } from '../../utils/objectToArray/objectToArray'
@@ -15,21 +16,15 @@ import { objectToArray } from '../../utils/objectToArray/objectToArray'
 export const Game = (): ReactElement => {
   const initiateProductionPhase = useProductionPhase()
 
-  const onUndoClick = useCallback(() => {
-    history.back()
-  }, [])
-
-  const onRedoClick = useCallback(() => {
-    history.forward()
-  }, [])
-
-  const onProductionPhaseClick = useCallback(() => {
-    initiateProductionPhase()
-  }, [initiateProductionPhase])
-
   return (
     <Page>
-      <HeaderBar />
+      <HeaderBar>
+        <UndoButton />
+
+        <Spacer size="sm" />
+
+        <RedoButton />
+      </HeaderBar>
 
       <Page.Content>
         <ResourcesContainer>
@@ -41,15 +36,7 @@ export const Game = (): ReactElement => {
 
       <FooterBar>
         <ButtonsContainer>
-          <UndoRedoButton type="button" kind="secondary" onClick={onUndoClick}>
-            <UndoIcon />
-          </UndoRedoButton>
-
-          <UndoRedoButton type="button" kind="secondary" onClick={onRedoClick}>
-            <RedoIcon />
-          </UndoRedoButton>
-
-          <Button type="button" kind="primary" onClick={onProductionPhaseClick}>
+          <Button type="button" kind="primary" onClick={initiateProductionPhase}>
             PRODUCTION PHASE
           </Button>
         </ButtonsContainer>
@@ -79,8 +66,4 @@ const ButtonsContainer = styled.div`
   margin: 0 auto;
   display: flex;
   gap: ${({ theme }) => theme.spacing.sm}px;
-`
-
-const UndoRedoButton = styled(Button)`
-  width: auto;
 `
