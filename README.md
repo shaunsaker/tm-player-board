@@ -6,7 +6,7 @@
 
 ## What is it?
 
-Welcome to the unofficial Terraforming Mars digital Player Board 👋🏻
+Welcome to the unofficial [Terraforming Mars](https://www.fryxgames.se/games/terraforming-mars/) digital Player Board 👋🏻
 
 Where bumping resource markers, fuzzy maths calculations and lack of resource cubes are a thing of the past 😎
 
