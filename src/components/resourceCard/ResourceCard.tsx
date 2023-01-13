@@ -56,28 +56,28 @@ export const ResourceCard = ({
 
         <Typography kind="small">{name}</Typography>
 
-        {special && (
-          <>
-            <Spacer size="sm" />
+        <Spacer size="sm" />
 
-            <SpecialContainer>
-              <SpecialButton
-                type="button"
-                kind="secondary"
-                disabled={resourceStockpile < special.cost}
-                style={{ backgroundColor: color }}
-                onClick={onSpecialClick}
-              >
-                {special.iconComponent}
+        {special ? (
+          <SpecialContainer>
+            <SpecialButton
+              type="button"
+              kind="secondary"
+              disabled={resourceStockpile < special.cost}
+              style={{ backgroundColor: color }}
+              onClick={onSpecialClick}
+            >
+              {special.iconComponent}
 
-                {special.megaCreditsValue && (
-                  <SpecialMegaCreditsValueContainer>
-                    <Typography kind="tiny">{special.megaCreditsValue}</Typography>
-                  </SpecialMegaCreditsValueContainer>
-                )}
-              </SpecialButton>
-            </SpecialContainer>
-          </>
+              {special.megaCreditsValue && (
+                <SpecialMegaCreditsValueContainer>
+                  <Typography kind="tiny">{special.megaCreditsValue}</Typography>
+                </SpecialMegaCreditsValueContainer>
+              )}
+            </SpecialButton>
+          </SpecialContainer>
+        ) : (
+          <IconContainer />
         )}
       </HeaderContainer>
 
@@ -133,6 +133,7 @@ const HeaderContainer = styled.div`
   border-radius: ${({ theme }) => theme.radius.sm}px;
   background-color: ${({ theme }) => theme.colors.white20};
   display: flex;
+  justify-content: space-between;
   align-items: center;
 `
 
@@ -148,9 +149,6 @@ const IconContainer = styled.div`
 
 const SpecialContainer = styled.div`
   position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
 `
 
 const SpecialButton = styled(Button)`
