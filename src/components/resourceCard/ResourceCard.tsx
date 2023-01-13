@@ -72,7 +72,6 @@ export const ResourceCard = ({
             min={Number(production.min)}
             value={resourceProduction}
             onChange={onChangeResourceProduction}
-            style={{ borderColor: color }}
           />
         </>
       )}
