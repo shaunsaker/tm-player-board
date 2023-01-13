@@ -17,4 +17,9 @@ export type Resource = {
     initial: number
     min: number
   }
+  special?: {
+    iconComponent: ReactElement
+    cost: number
+    megaCreditsValue?: number
+  }
 }

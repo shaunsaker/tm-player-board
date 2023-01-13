@@ -2,9 +2,13 @@ import React from 'react'
 
 import EnergyIcon from '../../assets/energy-icon.svg'
 import HeatIcon from '../../assets/heat-icon.svg'
+import HeatTemperatureIcon from '../../assets/heat-temperature-icon.svg'
 import MegaCreditIcon from '../../assets/mega-credit-icon.svg'
+import PlantsGreeneryIcon from '../../assets/plants-greenery-icon.svg'
 import PlantsIcon from '../../assets/plants-icon.svg'
+import SteelBuildingIcon from '../../assets/steel-building-icon.svg'
 import SteelIcon from '../../assets/steel-icon.svg'
+import TitaniumBuildingIcon from '../../assets/titanium-building-icon.svg'
 import TitaniumIcon from '../../assets/titanium-icon.svg'
 import TRIcon from '../../assets/tr-icon.svg'
 import { Resource, ResourceId } from './models'
@@ -47,6 +51,11 @@ export const resources: Record<ResourceId, Resource> = {
       initial: 1,
       min: 0,
     },
+    special: {
+      iconComponent: <SteelBuildingIcon />,
+      cost: 1,
+      megaCreditsValue: 2,
+    },
   },
   titanium: {
     id: 'titanium',
@@ -61,6 +70,11 @@ export const resources: Record<ResourceId, Resource> = {
       initial: 1,
       min: 0,
     },
+    special: {
+      iconComponent: <TitaniumBuildingIcon />,
+      cost: 1,
+      megaCreditsValue: 3,
+    },
   },
   plants: {
     id: 'plants',
@@ -74,6 +88,10 @@ export const resources: Record<ResourceId, Resource> = {
     production: {
       initial: 1,
       min: 0,
+    },
+    special: {
+      iconComponent: <PlantsGreeneryIcon />,
+      cost: 8,
     },
   },
   energy: {
@@ -102,6 +120,10 @@ export const resources: Record<ResourceId, Resource> = {
     production: {
       initial: 1,
       min: 0,
+    },
+    special: {
+      iconComponent: <HeatTemperatureIcon />,
+      cost: 8,
     },
   },
 }

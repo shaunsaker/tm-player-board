@@ -3,7 +3,7 @@ import '@fontsource/inter/latin-400.css'
 
 import styled, { css } from 'styled-components'
 
-export type TypographyKind = 'title' | 'heading' | 'paragraph' | 'small'
+export type TypographyKind = 'title' | 'heading' | 'paragraph' | 'small' | 'tiny'
 
 export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = {
   title: css`
@@ -39,6 +39,13 @@ export const getTypographyCss: Record<TypographyKind, ReturnType<typeof css>> = 
     font-family: Inter;
     font-size: 12px;
     line-height: 18px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.white100};
+  `,
+  tiny: css`
+    font-family: Inter;
+    font-size: 10px;
+    line-height: 12px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.white100};
   `,

@@ -1,8 +1,10 @@
 import React, { ChangeEvent, ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
+import { resources } from '../../store/resources/constants'
 import { Resource } from '../../store/resources/models'
 import { useResource } from '../../store/resources/useResource'
+import { Button } from '../button/Button'
 import { NumberInput } from '../numberInput/NumberInput'
 import { Spacer } from '../spacer/Spacer'
 import { Typography } from '../typography/Typography'
@@ -16,6 +18,7 @@ export const ResourceCard = ({
   iconComponent,
   stockpile,
   production,
+  special,
 }: ResourceCardProps): ReactElement => {
   const [resourceStockpile, setResourceStockpile] = useResource(id, 'stockpile')
   const [resourceProduction, setResourceProduction] = useResource(id, 'production')
@@ -34,6 +37,16 @@ export const ResourceCard = ({
     [setResourceProduction],
   )
 
+  const onSpecialClick = useCallback(() => {
+    if (!special) {
+      return
+    }
+
+    const newResourceStockpile = resourceStockpile - special.cost
+
+    setResourceStockpile(newResourceStockpile)
+  }, [resourceStockpile, setResourceStockpile, special])
+
   return (
     <Container>
       <HeaderContainer>
@@ -42,6 +55,30 @@ export const ResourceCard = ({
         <Spacer size="sm" />
 
         <Typography kind="small">{name}</Typography>
+
+        {special && (
+          <>
+            <Spacer size="sm" />
+
+            <SpecialContainer>
+              <SpecialButton
+                type="button"
+                kind="secondary"
+                disabled={resourceStockpile < special.cost}
+                style={{ backgroundColor: color }}
+                onClick={onSpecialClick}
+              >
+                {special.iconComponent}
+
+                {special.megaCreditsValue && (
+                  <SpecialMegaCreditsValueContainer>
+                    <Typography kind="tiny">{special.megaCreditsValue}</Typography>
+                  </SpecialMegaCreditsValueContainer>
+                )}
+              </SpecialButton>
+            </SpecialContainer>
+          </>
+        )}
       </HeaderContainer>
 
       {stockpile && (
@@ -107,4 +144,31 @@ const IconContainer = styled.div`
   align-items: center;
   font-size: 24px;
   color: ${({ theme }) => theme.colors.white100};
+`
+
+const SpecialContainer = styled.div`
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const SpecialButton = styled(Button)`
+  width: auto;
+`
+
+const SPECIAL_MEGA_CREDITS_VALUE_CONTAINER = 16
+
+const SpecialMegaCreditsValueContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: ${SPECIAL_MEGA_CREDITS_VALUE_CONTAINER}px;
+  height: ${SPECIAL_MEGA_CREDITS_VALUE_CONTAINER}px;
+  border: 1px solid ${({ theme }) => theme.colors.black100};
+  border-radius: ${({ theme }) => theme.radius.sm}px;
+  background-color: ${resources['mega-credits'].color};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
