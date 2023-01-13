@@ -28,7 +28,7 @@ export const getButtonCss: Record<ButtonKind, ReturnType<typeof css>> = {
   `,
   secondary: css`
     background-color: ${({ theme }) => theme.colors.black100};
-    border-color: ${({ theme }) => theme.colors.white20};
+    border-color: ${({ theme }) => theme.colors.black100};
 
     &:hover,
     &:focus-visible {

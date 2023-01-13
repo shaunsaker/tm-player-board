@@ -41,10 +41,9 @@ export const theme: DefaultTheme = {
     mobileSm: 374,
   },
   elements: {
-    inputs: 40,
+    inputs: 48,
   },
   maxWidths: {
-    content: 480,
-    button: 160,
+    content: 560,
   },
 }

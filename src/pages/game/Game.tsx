@@ -49,15 +49,15 @@ const ResourcesContainer = styled.div`
   width: 100%;
   display: grid;
   justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: ${({ theme }) => theme.spacing.sm}px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSm}px) {
-    grid-template-columns: 1fr;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `
 

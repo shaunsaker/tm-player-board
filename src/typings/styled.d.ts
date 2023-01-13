@@ -40,7 +40,6 @@ declare module 'styled-components' {
     }
     maxWidths: {
       content: number
-      button: number
     }
   }
 }
