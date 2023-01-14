@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { usePrevious } from '../../../hooks/usePrevious'
 
 const INITIAL_CHANGED_AMOUNT = 0
-const DISPLAY_DURATION = 3000
+const DISPLAY_DURATION = 4000
 
 export const useChangedAmount = (value: number): number => {
   const previousValue = usePrevious(value) || 0
@@ -30,16 +30,23 @@ export const useChangedAmount = (value: number): number => {
     // only show changedAmount for a few seconds, ie.
     // if changedAmount is set, then start a timer
     if (changedAmount) {
-      // clear any existing timer if it exists
+      // clear any existing timer if applicable
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
+
       timerRef.current = setTimeout(() => {
         setChangedAmount(INITIAL_CHANGED_AMOUNT)
       }, DISPLAY_DURATION)
-
-      return () => {
-        clearTimeout(timerRef.current)
-      }
     }
   }, [changedAmount])
+
+  useEffect(() => {
+    // on unmount, clear the timer
+    return () => {
+      clearTimeout(timerRef.current)
+    }
+  })
 
   return changedAmount
 }
