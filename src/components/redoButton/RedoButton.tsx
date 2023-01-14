@@ -1,7 +1,7 @@
 import React, { ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
-import RedoIcon from '../../assets/redo-icon.svg'
+import RedoIcon from '../../assets/icons/redo-icon.svg'
 import { Button } from '../button/Button'
 
 export const RedoButton = (): ReactElement => {

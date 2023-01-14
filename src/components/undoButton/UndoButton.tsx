@@ -1,7 +1,7 @@
 import React, { ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
-import UndoIcon from '../../assets/undo-icon.svg'
+import UndoIcon from '../../assets/icons/undo-icon.svg'
 import { Button } from '../button/Button'
 
 export const UndoButton = (): ReactElement => {

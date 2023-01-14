@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-import LogoIcon from '../../assets/logo-icon.svg'
+import LogoIcon from '../../assets/icons/logo-icon.svg'
 import { AnchorText } from '../../components/anchorText/AnchorText'
 import { Button } from '../../components/button/Button'
 import { FooterBar } from '../../components/footerBar/FooterBar'

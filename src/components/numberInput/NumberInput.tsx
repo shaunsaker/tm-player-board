@@ -1,8 +1,8 @@
 import React, { ChangeEvent, forwardRef, HTMLProps, ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
-import MinusIcon from '../../assets/minus-icon.svg'
-import PlusIcon from '../../assets/plus-icon.svg'
+import MinusIcon from '../../assets/icons/minus-icon.svg'
+import PlusIcon from '../../assets/icons/plus-icon.svg'
 import { Button } from '../button/Button'
 import { getTypographyCss } from '../typography/Typography'
 import { ChangedAmount } from './changedAmount/ChangedAmount'
