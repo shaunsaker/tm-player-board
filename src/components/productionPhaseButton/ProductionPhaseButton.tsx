@@ -1,7 +1,9 @@
 import React, { ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
+import ProductionPhaseSound from '../../assets/sounds/production-phase.wav'
 import { useLongPress } from '../../hooks/useLongPress'
+import { usePlaySound } from '../../hooks/usePlaySound'
 import { useProductionPhase } from '../../store/resources/useProductionPhase'
 import { Button } from '../button/Button'
 
@@ -10,9 +12,13 @@ const LONG_PRESS_DURATION = 1000
 export const ProductionPhaseButton = (): ReactElement => {
   const initiateProductionPhase = useProductionPhase()
 
+  const playSound = usePlaySound(ProductionPhaseSound)
+
   const onLongPress = useCallback(() => {
     initiateProductionPhase()
-  }, [initiateProductionPhase])
+
+    playSound()
+  }, [initiateProductionPhase, playSound])
 
   const { eventHandlers, isPressing } = useLongPress(onLongPress, LONG_PRESS_DURATION)
 

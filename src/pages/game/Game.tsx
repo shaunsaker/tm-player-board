@@ -7,15 +7,20 @@ import { Page } from '../../components/page/Page'
 import { ProductionPhaseButton } from '../../components/productionPhaseButton/ProductionPhaseButton'
 import { RedoButton } from '../../components/redoButton/RedoButton'
 import { ResourceCard } from '../../components/resourceCard/ResourceCard'
+import { SoundSettingButton } from '../../components/soundSettingButton/SoundSettingButton'
 import { Spacer } from '../../components/spacer/Spacer'
 import { UndoButton } from '../../components/undoButton/UndoButton'
 import { resources } from '../../store/resources/constants'
-import { objectToArray } from '../../utils/objectToArray/objectToArray'
+import { objectToArray } from '../../utils/objectToArray'
 
 export const Game = (): ReactElement => {
   return (
     <Page>
       <HeaderBar>
+        <SoundSettingButton />
+
+        <Spacer size="sm" />
+
         <UndoButton />
 
         <Spacer size="sm" />

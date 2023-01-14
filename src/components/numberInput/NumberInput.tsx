@@ -3,9 +3,14 @@ import styled from 'styled-components'
 
 import MinusIcon from '../../assets/icons/minus-icon.svg'
 import PlusIcon from '../../assets/icons/plus-icon.svg'
+import IncreaseSound from '../../assets/sounds/increase.wav'
+import { usePlaySound } from '../../hooks/usePlaySound'
 import { Button } from '../button/Button'
 import { getTypographyCss } from '../typography/Typography'
-import { ChangedAmount } from './changedAmount/ChangedAmount'
+import { ChangedAmount } from './ChangedAmount'
+import { useChangedAmount } from './useChangedAmount'
+
+const PITCH_VARIATION_FACTOR = 20
 
 type NumberInputProps = HTMLProps<HTMLInputElement> & {
   min: number
@@ -15,6 +20,12 @@ type NumberInputProps = HTMLProps<HTMLInputElement> & {
 
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ min, value, onChange, ...props }, ref): ReactElement => {
+    const changedAmount = useChangedAmount(value)
+
+    const playSound = usePlaySound(IncreaseSound, {
+      rate: 2 + changedAmount / PITCH_VARIATION_FACTOR,
+    })
+
     const onAddClick = useCallback(() => {
       const newValue = value + 1
 
@@ -24,7 +35,18 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           value: newValue,
         },
       })
-    }, [value, onChange])
+
+      playSound()
+    }, [value, onChange, playSound])
+
+    const onChangeCb = useCallback(
+      (event: ChangeEvent<HTMLInputElement>) => {
+        onChange(event)
+
+        playSound()
+      },
+      [onChange, playSound],
+    )
 
     const onSubtractClick = useCallback(() => {
       const newValue = value - 1
@@ -35,7 +57,9 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           value: newValue,
         },
       })
-    }, [value, onChange])
+
+      playSound()
+    }, [value, onChange, playSound])
 
     return (
       <Container>
@@ -56,12 +80,14 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             type="number"
             min={min}
             value={value}
-            onChange={onChange}
+            onChange={onChangeCb}
           />
 
-          <ChangeAmountContainer>
-            <ChangedAmount value={value} />
-          </ChangeAmountContainer>
+          {changedAmount ? (
+            <ChangeAmountContainer>
+              <ChangedAmount changedAmount={changedAmount} />
+            </ChangeAmountContainer>
+          ) : null}
         </InputContainer>
 
         <AddSubtractButton kind="secondary" type="button" onClick={onAddClick}>

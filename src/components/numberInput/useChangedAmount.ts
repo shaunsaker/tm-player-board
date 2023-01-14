@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { usePrevious } from '../../../hooks/usePrevious'
+import { usePrevious } from '../../hooks/usePrevious'
 
 const INITIAL_CHANGED_AMOUNT = 0
 const DISPLAY_DURATION = 4000

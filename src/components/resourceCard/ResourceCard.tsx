@@ -1,6 +1,8 @@
 import React, { ChangeEvent, ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
+import IncreaseSound from '../../assets/sounds/increase.wav'
+import { usePlaySound } from '../../hooks/usePlaySound'
 import { resources } from '../../store/resources/constants'
 import { Resource } from '../../store/resources/models'
 import { useResource } from '../../store/resources/useResource'
@@ -23,6 +25,8 @@ export const ResourceCard = ({
   const [resourceStockpile, setResourceStockpile] = useResource(id, 'stockpile')
   const [resourceProduction, setResourceProduction] = useResource(id, 'production')
   const [megaCreditsStockpile, setMegaCreditsStockpile] = useResource('mega-credits', 'stockpile')
+
+  const playSound = usePlaySound(IncreaseSound)
 
   const onChangeResourceStockpile = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +56,11 @@ export const ResourceCard = ({
 
       setMegaCreditsStockpile(newMegaCreditsStockpile)
     }
+
+    playSound()
   }, [
     megaCreditsStockpile,
+    playSound,
     resourceStockpile,
     setMegaCreditsStockpile,
     setResourceStockpile,
