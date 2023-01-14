@@ -44,6 +44,8 @@ export const getButtonCss: Record<ButtonKind, ReturnType<typeof css>> = {
 const StyledButton = styled.button<{
   kind: ButtonKind
 }>`
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
   width: 100%;
   min-width: ${({ theme }) => theme.elements.inputs}px;

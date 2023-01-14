@@ -1,21 +1,18 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
-import { Button } from '../../components/button/Button'
 import { FooterBar } from '../../components/footerBar/FooterBar'
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
+import { ProductionPhaseButton } from '../../components/productionPhaseButton/ProductionPhaseButton'
 import { RedoButton } from '../../components/redoButton/RedoButton'
 import { ResourceCard } from '../../components/resourceCard/ResourceCard'
 import { Spacer } from '../../components/spacer/Spacer'
 import { UndoButton } from '../../components/undoButton/UndoButton'
 import { resources } from '../../store/resources/constants'
-import { useProductionPhase } from '../../store/resources/useProductionPhase'
 import { objectToArray } from '../../utils/objectToArray/objectToArray'
 
 export const Game = (): ReactElement => {
-  const initiateProductionPhase = useProductionPhase()
-
   return (
     <Page>
       <HeaderBar>
@@ -36,9 +33,7 @@ export const Game = (): ReactElement => {
 
       <FooterBar>
         <ButtonsContainer>
-          <Button type="button" kind="primary" onClick={initiateProductionPhase}>
-            PRODUCTION PHASE
-          </Button>
+          <ProductionPhaseButton />
         </ButtonsContainer>
       </FooterBar>
     </Page>
