@@ -22,6 +22,7 @@ export const ResourceCard = ({
 }: ResourceCardProps): ReactElement => {
   const [resourceStockpile, setResourceStockpile] = useResource(id, 'stockpile')
   const [resourceProduction, setResourceProduction] = useResource(id, 'production')
+  const [megaCreditsStockpile, setMegaCreditsStockpile] = useResource('mega-credits', 'stockpile')
 
   const onChangeResourceStockpile = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +46,19 @@ export const ResourceCard = ({
     const newResourceStockpile = resourceStockpile - special.cost
 
     setResourceStockpile(newResourceStockpile)
-  }, [resourceStockpile, setResourceStockpile, special])
+
+    if (special.megaCreditsValue) {
+      const newMegaCreditsStockpile = megaCreditsStockpile + special.megaCreditsValue
+
+      setMegaCreditsStockpile(newMegaCreditsStockpile)
+    }
+  }, [
+    megaCreditsStockpile,
+    resourceStockpile,
+    setMegaCreditsStockpile,
+    setResourceStockpile,
+    special,
+  ])
 
   return (
     <Container>
