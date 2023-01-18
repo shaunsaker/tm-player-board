@@ -23,7 +23,7 @@ export default defineConfig({
       },
     }),
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       includeAssets: ['/favicon.ico', '/apple-touch-icon.png', '/icon.svg'],
       manifest: {
         name: appJson.displayName,
