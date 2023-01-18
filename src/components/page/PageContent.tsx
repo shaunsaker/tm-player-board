@@ -30,4 +30,5 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-bottom: ${({ theme }) => theme.elements.footerBar}px;
 `
