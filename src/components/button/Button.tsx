@@ -61,6 +61,7 @@ const StyledButton = styled.button<{
   font-weight: 700;
   white-space: nowrap;
   transition: ${({ theme }) => theme.transition.default};
+  user-select: none;
   ${({ kind }) => getButtonCss[kind]};
 
   &[aria-disabled='true'] {
