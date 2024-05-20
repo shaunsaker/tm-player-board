@@ -43,6 +43,7 @@ export const theme: DefaultTheme = {
   },
   elements: {
     inputs: 48,
+    headerBar: 64,
     footerBar: 64,
   },
   maxWidths: {

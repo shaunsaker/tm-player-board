@@ -17,11 +17,9 @@ const Container = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spacing.md}px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    padding: ${({ theme }) => theme.spacing.sm}px;
-  }
+  padding: ${({ theme }) => theme.spacing.sm}px;
+  /* firefox fix */
+  padding-bottom: ${({ theme }) => theme.elements.headerBar}px;
 `
 
 const ContentContainer = styled.div`

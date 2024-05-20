@@ -19,6 +19,10 @@ export const Game = (): ReactElement => {
         <RedoButton />
       </HeaderBar>
 
+      <ButtonsContainer>
+        <ProductionPhaseButton />
+      </ButtonsContainer>
+
       <Page.Content>
         <ResourcesContainer>
           {objectToArray(resources).map(resource => (
@@ -26,10 +30,6 @@ export const Game = (): ReactElement => {
           ))}
         </ResourcesContainer>
       </Page.Content>
-
-      <ButtonsContainer>
-        <ProductionPhaseButton />
-      </ButtonsContainer>
     </Page>
   )
 }
