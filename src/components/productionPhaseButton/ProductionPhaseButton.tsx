@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useLongPress } from '../../hooks/useLongPress'
 import { useProductionPhase } from '../../store/resources/useProductionPhase'
 import { Button } from '../button/Button'
+import { Typography } from '../typography/Typography'
 
 const LONG_PRESS_DURATION = 1000
 
@@ -20,6 +21,9 @@ export const ProductionPhaseButton = (): ReactElement => {
     <Button type="button" kind="primary" {...eventHandlers}>
       <PressAnimation data-is-pressing={isPressing} />
       PRODUCTION PHASE
+      <Typography kind="small">
+        <i>{isPressing ? 'Keep pressing...' : 'Press and hold'}</i>
+      </Typography>
     </Button>
   )
 }

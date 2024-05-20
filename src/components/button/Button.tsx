@@ -51,12 +51,13 @@ const StyledButton = styled.button<{
   max-width: ${({ theme }) => theme.maxWidths.content}px;
   margin: 0 auto;
   min-width: ${({ theme }) => theme.elements.inputs}px;
-  height: ${({ theme }) => theme.elements.inputs}px;
+  min-height: ${({ theme }) => theme.elements.inputs}px;
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.white20};
   border-radius: ${({ theme }) => theme.radius.sm}px;
   padding: ${({ theme }) => theme.spacing.sm}px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   ${getTypographyCss['paragraph']};
