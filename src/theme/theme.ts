@@ -46,6 +46,6 @@ export const theme: DefaultTheme = {
     footerBar: 64,
   },
   maxWidths: {
-    content: 560,
+    content: 480,
   },
 }

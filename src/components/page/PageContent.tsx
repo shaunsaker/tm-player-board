@@ -15,20 +15,19 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding: ${({ theme }) => theme.spacing.sm}px ${({ theme }) => theme.spacing.lg}px;
+  display: flex;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spacing.md}px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    padding: ${({ theme }) => theme.spacing.sm}px ${({ theme }) => theme.spacing.md}px;
+    padding: ${({ theme }) => theme.spacing.sm}px;
   }
 `
 
 const ContentContainer = styled.div`
   width: 100%;
-  max-width: ${({ theme }) => theme.maxWidths.content}px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: ${({ theme }) => theme.elements.footerBar}px;
 `

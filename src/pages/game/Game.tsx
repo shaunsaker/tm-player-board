@@ -1,13 +1,11 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
-import { FooterBar } from '../../components/footerBar/FooterBar'
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
 import { ProductionPhaseButton } from '../../components/productionPhaseButton/ProductionPhaseButton'
 import { RedoButton } from '../../components/redoButton/RedoButton'
 import { ResourceCard } from '../../components/resourceCard/ResourceCard'
-import { Spacer } from '../../components/spacer/Spacer'
 import { UndoButton } from '../../components/undoButton/UndoButton'
 import { resources } from '../../store/resources/constants'
 import { objectToArray } from '../../utils/objectToArray/objectToArray'
@@ -17,8 +15,6 @@ export const Game = (): ReactElement => {
     <Page>
       <HeaderBar>
         <UndoButton />
-
-        <Spacer size="sm" />
 
         <RedoButton />
       </HeaderBar>
@@ -31,11 +27,9 @@ export const Game = (): ReactElement => {
         </ResourcesContainer>
       </Page.Content>
 
-      <FooterBar>
-        <ButtonsContainer>
-          <ProductionPhaseButton />
-        </ButtonsContainer>
-      </FooterBar>
+      <ButtonsContainer>
+        <ProductionPhaseButton />
+      </ButtonsContainer>
     </Page>
   )
 }
@@ -57,8 +51,8 @@ const ResourcesContainer = styled.div`
 `
 
 const ButtonsContainer = styled.div`
-  max-width: ${({ theme }) => theme.maxWidths.content}px;
-  margin: 0 auto;
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.sm}px;
+  border-top: 1px solid ${({ theme }) => theme.colors.white20};
+  background-color: ${({ theme }) => theme.colors.black100};
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.sm}px;
 `

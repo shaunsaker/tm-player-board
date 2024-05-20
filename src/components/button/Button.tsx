@@ -48,6 +48,8 @@ const StyledButton = styled.button<{
   overflow: hidden;
   cursor: pointer;
   width: 100%;
+  max-width: ${({ theme }) => theme.maxWidths.content}px;
+  margin: 0 auto;
   min-width: ${({ theme }) => theme.elements.inputs}px;
   height: ${({ theme }) => theme.elements.inputs}px;
   outline: none;
