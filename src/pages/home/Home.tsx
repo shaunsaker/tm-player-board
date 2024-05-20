@@ -27,15 +27,15 @@ export const Home = (): ReactElement => {
           <StyledLogoIcon />
 
           <Typography kind="heading" as="h1">
-            Welcome to the unofficial Terraforming Mars digital Player Board 👋🏻
+            Welcome to the unofficial Terraforming Mars digital Player Board* 👋🏻
           </Typography>
 
           <Spacer />
 
           <Typography kind="paragraph">
             Where bumping resource markers, fuzzy maths calculations and lack of resource cubes are
-            a thing of the past 😎 Easily keep track of resources and their production. Allocate
-            resources in the Production Phase at the touch of a button.
+            a thing of the past 😎 Easily keep track of resources and their production. Hint:
+            Allocate resources in the Production Phase at the touch of a button.
           </Typography>
 
           <Spacer />
@@ -69,6 +69,14 @@ export const Home = (): ReactElement => {
           <Button type="button" kind="primary" onClick={onNewGameClick}>
             NEW GAME
           </Button>
+
+          <Spacer />
+
+          <Typography kind="small">
+            *This is a fan-made project and is not affiliated with FryxGames or Stronghold Games.
+            Furthermore, this is not a standalone game. It is a digital player board to help you
+            play the physical board game.
+          </Typography>
         </Container>
       </Page.Content>
 
