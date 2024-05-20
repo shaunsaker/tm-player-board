@@ -7,16 +7,32 @@ on:
     branches: [master]
 
 jobs:
-  testing:
-    runs-on: ubuntu-latest
+  release:
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
 
+    name: release
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: '18.x'
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal GH_TOKEN token
+
+      - uses: actions/setup-node@v4
+
+      # Install deps
       - run: yarn --frozen-lockfile
-      - run: yarn lint
-      - run: yarn test
+      - run: yarn global add netlify-cli
+
+      # Build the app
       - run: yarn build
+
+      # Create release
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          VITE_MIXPANEL_TOKEN: ${{ secrets.VITE_MIXPANEL_TOKEN }}
