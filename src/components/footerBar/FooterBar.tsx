@@ -2,13 +2,22 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import pkg from '../../../package.json'
+import GithubIcon from '../../assets/icons/github-icon.svg'
 import { AnchorText } from '../anchorText/AnchorText'
 import { Typography } from '../typography/Typography'
 
 export const FooterBar = (): ReactElement => {
   return (
     <Container>
-      <Typography kind="small">v{pkg.version}</Typography>
+      <VersionContainer kind="small">
+        <AnchorText href="https://github.com/shaunsaker/tm-player-board" style={{ fontSize: 20 }}>
+          <GithubIcon />
+        </AnchorText>
+        v{pkg.version}
+        <AnchorText href="https://github.com/shaunsaker/tm-player-board/releases">
+          Changelog
+        </AnchorText>
+      </VersionContainer>
 
       <Typography kind="small">
         Made with ❤️ of board games by{' '}
@@ -20,7 +29,7 @@ export const FooterBar = (): ReactElement => {
 
 const Container = styled.div`
   width: 100%;
-  height: ${({ theme }) => theme.elements.footerBar}px;
+  min-height: ${({ theme }) => theme.elements.footerBar}px;
   border-top: 1px solid ${({ theme }) => theme.colors.white20};
   background-color: ${({ theme }) => theme.colors.black100};
   display: flex;
@@ -33,4 +42,10 @@ const Container = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     padding: ${({ theme }) => theme.spacing.sm}px ${({ theme }) => theme.spacing.md}px;
   }
+`
+
+const VersionContainer = styled(Typography)`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm}px;
 `
