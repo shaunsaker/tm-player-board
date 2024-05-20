@@ -33,12 +33,5 @@ module.exports = {
     'react/display-name': OFF,
     'react-hooks/rules-of-hooks': ERROR,
     'react-hooks/exhaustive-deps': ERROR,
-    '@typescript-eslint/explicit-function-return-type': [
-      ERROR,
-      {
-        // disable the rule for expressions, e.g. in styled-components: ({theme}) => {}
-        allowExpressions: true,
-      },
-    ],
   },
 }
