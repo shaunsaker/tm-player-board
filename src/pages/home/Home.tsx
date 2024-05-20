@@ -8,6 +8,7 @@ import { FooterBar } from '../../components/footerBar/FooterBar'
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
 import { Spacer } from '../../components/spacer/Spacer'
+import { StarAnimationCheckbox } from '../../components/starAnimationCheckbox/StarAnimationCheckbox'
 import { Typography } from '../../components/typography/Typography'
 import { RoutePaths } from '../../Router'
 
@@ -34,35 +35,41 @@ export const Home = (): ReactElement => {
 
           <Typography kind="paragraph">
             Where bumping resource markers, fuzzy maths calculations and lack of resource cubes are
-            a thing of the past 😎 Easily keep track of resources and their production. Hint:
-            Allocate resources in the Production Phase at the touch of a button.
+            a thing of the past 😎 Easily keep track of resources and their production. Allocate
+            resources in the Production Phase at the touch of a button.
           </Typography>
 
           <Spacer />
 
           <StyledList>
             <li>
-              <Typography kind="paragraph">✅ Mobile-friendly</Typography>
+              <Typography kind="paragraph">🚀 Mobile-friendly</Typography>
             </li>
 
             <li>
-              <Typography kind="paragraph">✅ Offline</Typography>
+              <Typography kind="paragraph">🚀 Offline</Typography>
             </li>
 
             <li>
-              <Typography kind="paragraph">✅ Undo/Redo functionality</Typography>
+              <Typography kind="paragraph">🚀 Undo/Redo functionality</Typography>
             </li>
 
             <li>
-              <Typography kind="paragraph">✅ Lightning fast</Typography>
+              <Typography kind="paragraph">🚀 Lightning fast</Typography>
             </li>
           </StyledList>
 
           <Spacer />
 
           <Typography kind="paragraph">
-            Let the terraforming begin! God speed corporation X!
+            Let the terraforming begin... God speed corporation X!
           </Typography>
+
+          <Spacer />
+
+          <Spacer />
+
+          <StarAnimationCheckbox />
 
           <Spacer />
 
@@ -86,6 +93,7 @@ export const Home = (): ReactElement => {
 }
 
 const Container = styled.div`
+  flex: 1;
   max-width: ${({ theme }) => theme.maxWidths.content}px;
   margin: 0 auto;
   display: flex;
@@ -103,4 +111,8 @@ const StyledList = styled.ul`
   padding: 0;
   margin: 0;
   text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm}px;
 `
