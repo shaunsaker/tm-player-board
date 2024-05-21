@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/shaunsaker/tm-player-board/compare/v1.1.0...v1.2.0) (2024-05-21)
+
+
+### Features
+
+* add labels to undo and redo buttons ([4fbf2b2](https://github.com/shaunsaker/tm-player-board/commit/4fbf2b28e3c0f09f281888dddd9934d60734aa59))
+* add summary tab 😎 ([b8e7201](https://github.com/shaunsaker/tm-player-board/commit/b8e72017eaeea3ecaf9b5f981061155be8251091))
+* improve accent color contrast ratio ([df806c9](https://github.com/shaunsaker/tm-player-board/commit/df806c94065c75ffa30099f98d7a50abdb2513b0))
+
 # [1.1.0](https://github.com/shaunsaker/tm-player-board/compare/v1.0.0...v1.1.0) (2024-05-20)
 
 
