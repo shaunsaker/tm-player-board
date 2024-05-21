@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/shaunsaker/tm-player-board/compare/v1.2.0...v1.3.0) (2024-05-21)
+
+
+### Bug Fixes
+
+* Actions tab button alignment 🐛 ([9843d31](https://github.com/shaunsaker/tm-player-board/commit/9843d316b71668098484f7f6e6fdfbd85eb07708))
+* fixed a few accessibility issues 🐛 ([c5337fb](https://github.com/shaunsaker/tm-player-board/commit/c5337fbd66df107e50819fde1e2f1cc3a69dded8))
+
+
+### Features
+
+* debounce resource changes to better manage navigation state 🪄 ([09ac266](https://github.com/shaunsaker/tm-player-board/commit/09ac266337a8ac52f84e3c0e60bb50b4f34587a4))
+
 # [1.2.0](https://github.com/shaunsaker/tm-player-board/compare/v1.1.0...v1.2.0) (2024-05-21)
 
 
