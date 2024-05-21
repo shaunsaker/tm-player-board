@@ -7,34 +7,33 @@ import { Button } from '../button/Button'
 import { Input } from '../input/Input'
 import { ChangedAmount } from './changedAmount/ChangedAmount'
 
-type NumberInputProps = HTMLProps<HTMLInputElement> & {
+type NumberInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'> & {
   min: number
   value: number
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange: (value: number) => void
 }
 
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ min, value, onChange, ...props }, ref): ReactElement => {
+    const handleChange = useCallback(
+      (event: ChangeEvent<HTMLInputElement>) => {
+        const newValue = parseInt(event.target.value, 10)
+
+        onChange(newValue)
+      },
+      [onChange],
+    )
+
     const onAddClick = useCallback(() => {
       const newValue = value + 1
 
-      // @ts-expect-error mocked change event
-      onChange({
-        target: {
-          value: newValue,
-        },
-      })
+      onChange(newValue)
     }, [value, onChange])
 
     const onSubtractClick = useCallback(() => {
       const newValue = value - 1
 
-      // @ts-expect-error mocked change event
-      onChange({
-        target: {
-          value: newValue,
-        },
-      })
+      onChange(newValue)
     }, [value, onChange])
 
     return (
@@ -56,7 +55,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             type="number"
             min={min}
             value={value}
-            onChange={onChange}
+            onChange={handleChange}
           />
 
           <ChangeAmountContainer>

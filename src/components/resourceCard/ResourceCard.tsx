@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement, useCallback } from 'react'
+import React, { ReactElement, useCallback } from 'react'
 import styled from 'styled-components'
 
 import { resources } from '../../store/resources/constants'
@@ -25,15 +25,15 @@ export const ResourceCard = ({
   const [megaCreditsStockpile, setMegaCreditsStockpile] = useResource('mega-credits', 'stockpile')
 
   const onChangeResourceStockpile = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setResourceStockpile(parseInt(event.target.value))
+    (value: number) => {
+      setResourceStockpile(value)
     },
     [setResourceStockpile],
   )
 
   const onChangeResourceProduction = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setResourceProduction(parseInt(event.target.value))
+    (value: number) => {
+      setResourceProduction(value)
     },
     [setResourceProduction],
   )
