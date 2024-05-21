@@ -9,8 +9,7 @@ export const useChangedAmount = (value: number): number => {
   const previousValue = usePrevious(value) || 0
 
   const [changedAmount, setChangedAmount] = useState(INITIAL_CHANGED_AMOUNT)
-
-  const timerRef = useRef<ReturnType<typeof setInterval>>()
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     // if the value changed from the previous value, display the amount changed
@@ -29,7 +28,7 @@ export const useChangedAmount = (value: number): number => {
   useEffect(() => {
     // only show changedAmount for a few seconds, ie.
     // if changedAmount is set, then start a timer
-    if (changedAmount) {
+    if (changedAmount !== INITIAL_CHANGED_AMOUNT) {
       // clear any existing timer if applicable
       if (timerRef.current) {
         clearTimeout(timerRef.current)
@@ -39,14 +38,14 @@ export const useChangedAmount = (value: number): number => {
         setChangedAmount(INITIAL_CHANGED_AMOUNT)
       }, DISPLAY_DURATION)
     }
-  }, [changedAmount])
 
-  useEffect(() => {
-    // on unmount, clear the timer
+    // clear the timer on unmount or if changedAmount changes
     return () => {
-      clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
     }
-  })
+  }, [changedAmount])
 
   return changedAmount
 }
