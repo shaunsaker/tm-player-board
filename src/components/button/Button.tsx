@@ -6,20 +6,29 @@ import { getTypographyCss } from '../typography/Typography'
 type ButtonKind = 'primary' | 'secondary'
 
 type ButtonProps = HTMLProps<HTMLButtonElement> & {
-  type: 'button' | 'submit'
-  kind: ButtonKind
+  type?: 'button' | 'submit'
+  kind?: ButtonKind
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ disabled, ...props }, ref) => {
-  return (
-    <StyledButton {...props} as="button" ref={ref} disabled={disabled} aria-disabled={disabled} />
-  )
-})
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ type = 'button', kind = 'primary', disabled, ...props }, ref) => {
+    return (
+      <StyledButton
+        {...props}
+        as="button"
+        ref={ref}
+        type={type}
+        kind={kind}
+        disabled={disabled}
+        aria-disabled={disabled}
+      />
+    )
+  },
+)
 
 export const getButtonCss: Record<ButtonKind, ReturnType<typeof css>> = {
   primary: css`
     background-color: ${({ theme }) => theme.colors.accent};
-    border-color: ${({ theme }) => theme.colors.black100};
 
     &:hover,
     &:focus-visible {
@@ -28,7 +37,6 @@ export const getButtonCss: Record<ButtonKind, ReturnType<typeof css>> = {
   `,
   secondary: css`
     background-color: ${({ theme }) => theme.colors.black100};
-    border-color: ${({ theme }) => theme.colors.black100};
 
     &:hover,
     &:focus-visible {
@@ -49,9 +57,8 @@ const StyledButton = styled.button<{
   cursor: pointer;
   width: 100%;
   max-width: ${({ theme }) => theme.maxWidths.content}px;
-  margin: 0 auto;
   min-width: ${({ theme }) => theme.elements.inputs}px;
-  min-height: ${({ theme }) => theme.elements.inputs}px;
+  height: ${({ theme }) => theme.elements.inputs}px;
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.white20};
   border-radius: ${({ theme }) => theme.radius.sm}px;

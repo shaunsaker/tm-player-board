@@ -19,7 +19,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing.sm}px;
   /* firefox fix */
-  padding-bottom: ${({ theme }) => theme.elements.headerBar}px;
+  padding-bottom: ${({ theme }) => `${theme.elements.headerBar + theme.elements.tabBar}`}px;
 `
 
 const ContentContainer = styled.div`

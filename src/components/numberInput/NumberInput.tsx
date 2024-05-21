@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import MinusIcon from '../../assets/icons/minus-icon.svg'
 import PlusIcon from '../../assets/icons/plus-icon.svg'
 import { Button } from '../button/Button'
-import { getTypographyCss } from '../typography/Typography'
+import { Input } from '../input/Input'
 import { ChangedAmount } from './changedAmount/ChangedAmount'
 
 type NumberInputProps = HTMLProps<HTMLInputElement> & {
@@ -83,34 +83,6 @@ const AddSubtractButton = styled(Button)`
 
 const InputContainer = styled.div`
   position: relative;
-`
-
-const Input = styled.input`
-  all: unset;
-  box-sizing: border-box;
-  width: ${({ theme }) => theme.elements.inputs}px;
-  height: ${({ theme }) => theme.elements.inputs}px;
-  border: 1px solid ${({ theme }) => theme.colors.black100};
-  border-radius: ${({ theme }) => theme.radius.sm}px;
-  background-color: ${({ theme }) => theme.colors.black100};
-  text-align: center;
-  ${getTypographyCss['small']};
-  transition: ${({ theme }) => theme.transition.default};
-
-  /* Chrome, Safari, Edge, Opera */
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-
-  /* Firefox */
-  -moz-appearance: textfield;
-
-  &:hover,
-  &:focus-visible {
-    border-color: ${({ theme }) => theme.colors.accent};
-    background-color: ${({ theme }) => theme.colors.white20};
-  }
 `
 
 const ChangeAmountContainer = styled.div`

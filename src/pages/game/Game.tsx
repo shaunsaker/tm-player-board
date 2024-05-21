@@ -3,56 +3,29 @@ import styled from 'styled-components'
 
 import { HeaderBar } from '../../components/headerBar/HeaderBar'
 import { Page } from '../../components/page/Page'
-import { ProductionPhaseButton } from '../../components/productionPhaseButton/ProductionPhaseButton'
-import { RedoButton } from '../../components/redoButton/RedoButton'
-import { ResourceCard } from '../../components/resourceCard/ResourceCard'
-import { UndoButton } from '../../components/undoButton/UndoButton'
-import { resources } from '../../store/resources/constants'
-import { objectToArray } from '../../utils/objectToArray/objectToArray'
+import { TabBar } from '../../components/tabBar/TabBar'
+import { useActiveGameTab } from '../../hooks/useActiveGameTab'
+import { ActionsTab } from './tabs/ActionsTab'
+import { SummaryTab } from './tabs/SummaryTab'
 
 export const Game = (): ReactElement => {
+  const [activeTab] = useActiveGameTab()
+
   return (
     <Page>
-      <HeaderBar>
-        <UndoButton />
+      <HeaderBar />
 
-        <RedoButton />
-      </HeaderBar>
+      <TabContainer>{activeTab === 'actions' ? <ActionsTab /> : <SummaryTab />}</TabContainer>
 
-      <ButtonsContainer>
-        <ProductionPhaseButton />
-      </ButtonsContainer>
-
-      <Page.Content>
-        <ResourcesContainer>
-          {objectToArray(resources).map(resource => (
-            <ResourceCard key={resource.id} {...resource} />
-          ))}
-        </ResourcesContainer>
-      </Page.Content>
+      <TabBar />
     </Page>
   )
 }
 
-const ResourcesContainer = styled.div`
+const TabContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr;
-  gap: ${({ theme }) => theme.spacing.sm}px;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-`
-
-const ButtonsContainer = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.white20};
-  background-color: ${({ theme }) => theme.colors.black100};
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing.sm}px;
+  height: 100%;
+  overflow: hidden;
 `

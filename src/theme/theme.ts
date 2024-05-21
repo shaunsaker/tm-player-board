@@ -45,6 +45,7 @@ export const theme: DefaultTheme = {
     inputs: 48,
     headerBar: 64,
     footerBar: 64,
+    tabBar: 48,
   },
   maxWidths: {
     content: 480,

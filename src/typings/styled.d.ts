@@ -40,6 +40,7 @@ declare module 'styled-components' {
       inputs: number
       headerBar: number
       footerBar: number
+      tabBar: number
     }
     maxWidths: {
       content: number
