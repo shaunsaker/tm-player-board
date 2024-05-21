@@ -1,4 +1,12 @@
-import React, { ChangeEvent, forwardRef, HTMLProps, ReactElement, useCallback } from 'react'
+import React, {
+  ChangeEvent,
+  forwardRef,
+  HTMLProps,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 
 import MinusIcon from '../../assets/icons/minus-icon.svg'
@@ -15,34 +23,53 @@ type NumberInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'> & {
 
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ min, value, onChange, ...props }, ref): ReactElement => {
-    const handleChange = useCallback(
-      (event: ChangeEvent<HTMLInputElement>) => {
-        const newValue = parseInt(event.target.value, 10)
+    const [debouncedValue, setDebouncedValue] = useState(value)
+    const [isTyping, setIsTyping] = useState(false)
 
-        onChange(newValue)
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        if (isTyping) {
+          onChange(debouncedValue)
+          setIsTyping(false)
+        }
+      }, 1000)
+
+      return () => {
+        clearTimeout(handler)
+      }
+    }, [debouncedValue, isTyping, onChange])
+
+    useEffect(() => {
+      setDebouncedValue(value)
+    }, [value])
+
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+      const newValue = parseInt(event.target.value, 10)
+      setDebouncedValue(newValue)
+      setIsTyping(true)
+    }, [])
+
+    const handleBlur = useCallback(() => {
+      onChange(debouncedValue)
+      setIsTyping(false)
+    }, [debouncedValue, onChange])
+
+    const handleButtonClick = useCallback(
+      (change: number) => {
+        const newValue = debouncedValue + change
+        setDebouncedValue(newValue)
+        setIsTyping(true)
       },
-      [onChange],
+      [debouncedValue],
     )
-
-    const onAddClick = useCallback(() => {
-      const newValue = value + 1
-
-      onChange(newValue)
-    }, [value, onChange])
-
-    const onSubtractClick = useCallback(() => {
-      const newValue = value - 1
-
-      onChange(newValue)
-    }, [value, onChange])
 
     return (
       <Container>
         <AddSubtractButton
           kind="secondary"
           type="button"
-          disabled={value === min}
-          onClick={onSubtractClick}
+          disabled={debouncedValue === min}
+          onClick={() => handleButtonClick(-1)}
         >
           <MinusIcon />
         </AddSubtractButton>
@@ -54,16 +81,17 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             as="input"
             type="number"
             min={min}
-            value={value}
+            value={debouncedValue}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <ChangeAmountContainer>
-            <ChangedAmount value={value} />
+            <ChangedAmount value={debouncedValue} />
           </ChangeAmountContainer>
         </InputContainer>
 
-        <AddSubtractButton kind="secondary" type="button" onClick={onAddClick}>
+        <AddSubtractButton kind="secondary" type="button" onClick={() => handleButtonClick(1)}>
           <PlusIcon />
         </AddSubtractButton>
       </Container>
