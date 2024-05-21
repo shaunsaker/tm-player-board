@@ -22,6 +22,5 @@ module.exports = {
       },
     ],
     '@semantic-release/github',
-    '@eclass/semantic-release-netlify',
   ],
 }
