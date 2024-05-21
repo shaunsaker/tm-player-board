@@ -38,6 +38,8 @@ const ButtonsContainer = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.white20};
   background-color: ${({ theme }) => theme.colors.black100};
   width: 100%;
+  max-width: ${({ theme }) => theme.maxWidths.content}px;
+  margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.sm}px;
   gap: ${({ theme }) => theme.spacing.sm}px;
 `

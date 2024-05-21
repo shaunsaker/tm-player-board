@@ -17,28 +17,33 @@ export const TabBar = (): ReactElement => {
 
   return (
     <Container>
-      {TABS.map(tab => (
-        <Tab
-          key={tab.id}
-          kind="secondary"
-          active={activeTab === tab.id}
-          onClick={() => setActiveTab(tab.id)}
-        >
-          {tab.label}
-        </Tab>
-      ))}
+      <ContentContainer>
+        {TABS.map(tab => (
+          <Tab
+            key={tab.id}
+            kind="secondary"
+            active={activeTab === tab.id}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </Tab>
+        ))}
+      </ContentContainer>
     </Container>
   )
 }
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: ${({ theme }) => theme.elements.tabBar}px;
-  border-top: 1px solid ${({ theme }) => theme.colors.white20};
-  background-color: ${({ theme }) => theme.colors.black100};
+`
+
+const ContentContainer = styled.div`
+  max-width: ${({ theme }) => theme.maxWidths.content}px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
 `
