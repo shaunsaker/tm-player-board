@@ -1,7 +1,7 @@
 import { HTMLProps } from 'react'
 import styled from 'styled-components'
 
-type IconButtonProps = HTMLProps<HTMLButtonElement> & { name: string }
+type IconButtonProps = HTMLProps<HTMLButtonElement> & { title: string }
 
 export const IconButton = styled.button.attrs(() => ({ type: 'button' }))<IconButtonProps>`
   all: unset;

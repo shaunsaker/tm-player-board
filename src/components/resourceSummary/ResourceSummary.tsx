@@ -31,9 +31,17 @@ export const ResourceSummary = ({
         <Typography kind="tiny">{name}</Typography>
       </IconContainer>
 
-      {stockpile ? <StyledInput value={resourceStockpile} disabled /> : <Placeholder />}
+      {stockpile ? (
+        <StyledInput name={`${name} stockpile`} value={resourceStockpile} disabled />
+      ) : (
+        <Placeholder />
+      )}
 
-      {production ? <StyledInput value={resourceProduction} disabled /> : <Placeholder />}
+      {production ? (
+        <StyledInput name={`${name} production`} value={resourceProduction} disabled />
+      ) : (
+        <Placeholder />
+      )}
     </Container>
   )
 }

@@ -10,18 +10,27 @@ export const FooterBar = (): ReactElement => {
   return (
     <Container>
       <VersionContainer kind="small">
-        <AnchorText href="https://github.com/shaunsaker/tm-player-board" style={{ fontSize: 20 }}>
+        <AnchorText
+          href="https://github.com/shaunsaker/tm-player-board"
+          aria-label="github"
+          style={{ fontSize: 20 }}
+        >
           <GithubIcon />
         </AnchorText>
         v{pkg.version}
-        <AnchorText href="https://github.com/shaunsaker/tm-player-board/releases">
+        <AnchorText
+          href="https://github.com/shaunsaker/tm-player-board/releases"
+          aria-label="changelog"
+        >
           Changelog
         </AnchorText>
       </VersionContainer>
 
       <Typography kind="small">
         Made with ❤️ of board games by{' '}
-        <AnchorText href="https://shaunsaker.com">Shaun Saker</AnchorText>
+        <AnchorText href="https://shaunsaker.com" aria-label="shaun saker">
+          Shaun Saker
+        </AnchorText>
       </Typography>
     </Container>
   )

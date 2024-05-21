@@ -22,7 +22,7 @@ export const HeaderBar = ({ children }: HeaderBarProps): ReactElement => {
     <Container>
       {showBackButton && (
         <>
-          <IconButton name="back" onClick={goBack}>
+          <IconButton title="Go back" onClick={goBack}>
             <AngleLeftIcon />
           </IconButton>
 

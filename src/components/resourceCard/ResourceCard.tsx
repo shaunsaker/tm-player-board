@@ -105,6 +105,8 @@ export const ResourceCard = ({
           <NumberInput
             min={Number(stockpile.min)}
             value={resourceStockpile}
+            name={`${name} stockpile`}
+            aria-label={`${name} stockpile`}
             onChange={onChangeResourceStockpile}
           />
         </>
@@ -121,6 +123,8 @@ export const ResourceCard = ({
           <NumberInput
             min={Number(production.min)}
             value={resourceProduction}
+            name={`${name} production`}
+            aria-label={`${name} production`}
             onChange={onChangeResourceProduction}
           />
         </>

@@ -18,6 +18,7 @@ import { ChangedAmount } from './changedAmount/ChangedAmount'
 type NumberInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'> & {
   min: number
   value: number
+  ['aria-label']: string
   onChange: (value: number) => void
 }
 
@@ -68,6 +69,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         <AddSubtractButton
           kind="secondary"
           type="button"
+          title="Decrease value"
           disabled={debouncedValue === min}
           onClick={() => handleButtonClick(-1)}
         >
@@ -91,7 +93,12 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           </ChangeAmountContainer>
         </InputContainer>
 
-        <AddSubtractButton kind="secondary" type="button" onClick={() => handleButtonClick(1)}>
+        <AddSubtractButton
+          kind="secondary"
+          type="button"
+          title="Increase value"
+          onClick={() => handleButtonClick(1)}
+        >
           <PlusIcon />
         </AddSubtractButton>
       </Container>

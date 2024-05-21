@@ -21,6 +21,7 @@ const Container = styled.div`
   z-index: 1;
   width: 100%;
   height: 100vh;
+  backgorund-color: ${({ theme }) => theme.colors.black100};
   display: flex;
   flex-direction: column;
   align-items: center;
